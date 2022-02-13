@@ -1,15 +1,31 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
-import Gallery from "./gallery/Gallery";
 import Header from "./header/Header";
+import Bio from "./bio/Bio";
+import Gallery from "./gallery/Gallery";
+import Exhibitions from "./exhibitions/Exhibitions";
+import Contact from "./contact/Contact";
 
 function App() {
   return (
-    <div className="App">
-      <Header className="Header" />
-      <div className="contentArea">
-        <Gallery className="Gallery" />
+    <Router>
+      <div className="App">
+        <Header className="Header" />
+        <Routes>
+          <Route path="/" element={<Bio />} />
+          <Route path="/bio" element={<Bio />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/exhibitions" element={<Exhibitions />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Bio />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 

@@ -1,4 +1,5 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   function openSidebar() {
@@ -9,7 +10,7 @@ function Header() {
       link.style.animation
         ? (link.style.animation = ``)
         : (link.style.animation = `navigationFade 0.5s ease forwards ${
-            index / 7 + 0.5
+            index / 5 + 0.5
           }s`);
     });
     const burgerMenu = document.querySelector(".burger-menu");
@@ -24,24 +25,24 @@ function Header() {
         </div>
         <ul className="primary-navigation">
           <li>
-            <a href="" className="navigation-link">
+            <Link to="/bio" className="navigation-link">
               Bio
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="" className="navigation-link">
+            <Link to="/gallery" className="navigation-link">
               Galéria
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="" className="navigation-link">
+            <Link to="/exhibitions" className="navigation-link">
               Výstavy
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="" className="navigation-link">
+            <Link to="/contact" className="navigation-link">
               Kontakt
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="burger-menu" onClick={openSidebar}>

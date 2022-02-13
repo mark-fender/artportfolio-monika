@@ -17,10 +17,11 @@ function Gallery() {
     };
     getSeries();
   }, []);
+
   return (
     <div className="Gallery">
       {series.map((serie) => {
-        return <div></div>;
+        return <div key={serie.id}>{serie.name}</div>;
       })}
     </div>
   );
