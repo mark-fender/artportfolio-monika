@@ -1,10 +1,28 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { auth } from "../../firebase-config";
 import "./Login.css";
 
 function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  // #0a8980
+  const [loading, setLoading] = useState(false);
+
+  async function login() {
+    if (emailRef.current.value && passwordRef.current.value) {
+      console.log(emailRef, passwordRef);
+      setLoading(true);
+      try {
+        await auth.signInWithEmailAndPassword(
+          emailRef.current.value,
+          passwordRef.current.value
+        );
+      } catch (error) {
+        window.alert("Ups! Nepodarilo sa prihlasit");
+        console.error(error);
+      }
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="center">
@@ -20,7 +38,12 @@ function Login() {
           <span></span>
           <label>Heslo</label>
         </div>
-        <input type="submit" value="Login"></input>
+        <input
+          type="submit"
+          value="Login"
+          disabled={loading}
+          onClick={login}
+        ></input>
       </form>
     </div>
   );

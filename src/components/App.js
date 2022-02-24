@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Outlet,
   Route,
   Routes,
-  Switch,
 } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
@@ -13,13 +13,26 @@ import Exhibitions from "./exhibitions/Exhibitions";
 import Contact from "./contact/Contact";
 import Login from "./login/Login";
 import AdminPage from "./admin/AdminPage";
-import { useAuth } from "../context/AuthContext";
-
-const ProtectedRoutes = () => {
-  return useAuth() ? <Outlet /> : <Login />;
-};
+import { auth } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
+  const [user, setUser] = useState("");
+
+  function authListener() {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }
+
+  const ProtectedRoutes = () => {
+    return user ? <Outlet /> : <Login />;
+  };
+
+  useEffect(() => {
+    authListener();
+  }, []);
+
   return (
     <Router>
       <div className="App">
