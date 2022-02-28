@@ -1,0 +1,73 @@
+.formArea {
+  height: 75vh;
+  width: 75vw;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: 1px solid silver;
+}
+
+h3 {
+  margin-left: 2.5rem;
+}
+
+form {
+  margin: 2rem auto;
+  width: 100%;
+}
+
+.formControl {
+  margin: 0 2rem;
+  display: inline-block;
+}
+
+label,
+input,
+textarea {
+  margin-bottom: 1rem;
+  display: block;
+}
+
+textarea {
+  resize: none;
+  height: 2.5rem;
+  width: 40rem;
+}
+
+.section {
+  display: inline-flex;
+}
+
+.buttonArea {
+  width: 100%;
+  margin: 1rem 0 1rem;
+  height: fit-content;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.logoutButton,
+.submitButton {
+  width: 10rem;
+  height: 2.5rem;
+  border: 1px solid;
+  background: linear-gradient(190deg, #0a8980, #0eddcf);
+  border-radius: 25px;
+  margin-top: 2rem;
+  font-size: 15px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.logoutButton {
+  margin-left: 2rem;
+}
+
+.submitButton {
+  margin-right: 2rem;
+}

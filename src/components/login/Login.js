@@ -2,14 +2,13 @@ import { useRef, useState } from "react";
 import { auth } from "../../firebase-config";
 import "./Login.css";
 
-function Login() {
+export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
 
   async function login() {
     if (emailRef.current.value && passwordRef.current.value) {
-      console.log(emailRef, passwordRef);
       setLoading(true);
       try {
         await auth.signInWithEmailAndPassword(
@@ -17,7 +16,7 @@ function Login() {
           passwordRef.current.value
         );
       } catch (error) {
-        window.alert("Ups! Nepodarilo sa prihlasit");
+        window.alert("Ups! Nepodarilo sa prihlásiť.");
         console.error(error);
       }
       setLoading(false);
@@ -30,17 +29,15 @@ function Login() {
       <form method="post">
         <div className="textField">
           <input type="text" required ref={emailRef}></input>
-          <span></span>
           <label>E-mail</label>
         </div>
         <div className="textField">
           <input type="password" required ref={passwordRef}></input>
-          <span></span>
           <label>Heslo</label>
         </div>
         <input
           type="submit"
-          value="Login"
+          value="Prihlásiť sa"
           disabled={loading}
           onClick={login}
         ></input>
@@ -48,5 +45,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

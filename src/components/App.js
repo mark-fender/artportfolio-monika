@@ -33,7 +33,9 @@ function App() {
     authListener();
   }, []);
 
-  return (
+  return user === "" ? (
+    <div></div>
+  ) : (
     <Router>
       <div className="App">
         <Header className="Header" />

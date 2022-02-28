@@ -21,7 +21,7 @@ function Header() {
     <div className="Header">
       <nav>
         <div className="logo">
-          <h1>Logo</h1>
+          <h1>Monika Hurajová</h1>
         </div>
         <ul className="primary-navigation">
           <li>

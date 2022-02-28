@@ -24,7 +24,7 @@
 form .textField {
   position: relative;
   border-bottom: 2px solid #adadad;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .textField input {
@@ -49,27 +49,10 @@ form .textField {
   transition: 0.5s;
 }
 
-.textField span::before {
-  content: "";
-  position: absolute;
-  top: 2.5rem;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #0a8980;
-  transition: 0.5s;
-}
-
 .textField input:focus ~ label,
 .textField input:valid ~ label {
   top: -5px;
   font-weight: bolder;
-  color: #0a8980;
-}
-
-.textField input:focus ~ span::before,
-.textField input:valid ~ span::before {
-  width: 100%;
 }
 
 input[type="submit"] {
