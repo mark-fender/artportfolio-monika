@@ -6,7 +6,7 @@ nav {
   height: 8vh;
   width: 100%;
   font-size: 0.9rem;
-  font-weight: 1000;
+  font-weight: 800;
   background-color: #dbdee3;
   opacity: 0.75;
   border-bottom: #828488 solid 0.25px;
@@ -15,6 +15,10 @@ nav {
 
 .logo {
   padding-right: 1rem;
+}
+
+h1 {
+  padding-bottom: 0.35rem;
 }
 
 .primary-navigation {

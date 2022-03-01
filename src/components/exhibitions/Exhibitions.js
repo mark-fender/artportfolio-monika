@@ -1,5 +1,3 @@
-function Exhibitions() {
+export default function Exhibitions() {
   return <div></div>;
 }
-
-export default Exhibitions;

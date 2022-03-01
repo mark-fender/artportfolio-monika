@@ -16,7 +16,7 @@ import AdminPage from "./admin/AdminPage";
 import { auth } from "../firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 
-function App() {
+export default function App() {
   const [user, setUser] = useState("");
 
   function authListener() {
@@ -54,5 +54,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

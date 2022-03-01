@@ -1,16 +1,30 @@
 import { React, useState, useEffect, useRef } from "react";
-import { db } from "../../firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+import { db, storage } from "../../firebase-config";
+import {
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+  query,
+  where,
+  onSnapshot,
+} from "firebase/firestore";
 import { auth } from "../../firebase-config";
 import "./AdminPage.css";
 
 export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [series, setSeries] = useState([]);
+
+  const paintingDescription = useRef();
   const [paintingFile, setPaintingFile] = useState();
-  const [exhibitionFile, setExhibitionFile] = useState();
   const [selectedSerie, setSelectedSerie] = useState();
+  const paintingSerie = useRef();
+
+  const [exhibitionFile, setExhibitionFile] = useState();
+
   const seriesCollectionRef = collection(db, "series");
+  const paintingsCollectionRef = collection(db, "paintings");
   const allowedTypes = ["image/png", "image/jpeg", "image/jpeg"];
   const componentMounted = useRef(true);
 
@@ -54,11 +68,67 @@ export default function AdminPage() {
       : setExhibitionFile(null);
   }
 
-  function submitForm() {}
+  function setSerie(e) {
+    e.preventDefault();
+    console.log(e);
+  }
+
+  async function submitForm() {
+    setLoading(true);
+    uploadNewPainting();
+    setLoading(false);
+  }
+
+  async function uploadNewPainting() {
+    if (paintingDescription.current.value && paintingFile) {
+      const storageRef = storage.ref(paintingFile.name);
+      await storageRef.put(paintingFile);
+      const url = await storageRef.getDownloadURL();
+      if (!selectedSerie && paintingSerie.current.value) {
+        const q = query(
+          seriesCollectionRef,
+          where("name", "==", paintingSerie.current.value)
+        );
+        let newSerie;
+        onSnapshot(q, (snapshot) => {
+          newSerie = snapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))[0];
+        });
+        await setDoc(doc(seriesCollectionRef), {
+          name: paintingSerie.current.value,
+        });
+        try {
+          await setDoc(doc(paintingsCollectionRef), {
+            description: paintingDescription.current.value,
+            serie: newSerie.id,
+            image: url,
+          });
+          window.alert("Úspešne nahrané. To je krása! 😍");
+        } catch (error) {
+          console.error(error);
+          window.alert("Nahrávanie zlyhalo 😔");
+        }
+      } else {
+        try {
+          await setDoc(doc(paintingsCollectionRef), {
+            description: paintingDescription.current.value,
+            serie: selectedSerie.id,
+            image: url,
+          });
+          window.alert("Úspešne nahrané. To je krása! 😍");
+        } catch (error) {
+          console.error(error);
+          window.alert("Nahrávanie zlyhalo 😔");
+        }
+      }
+    }
+  }
 
   return (
     <div className="formArea">
-      <form>
+      <form disabled={loading}>
         <div className="section">
           <h3>Bio</h3>
           <div className="formControl">
@@ -69,15 +139,24 @@ export default function AdminPage() {
           <h3>Maľba</h3>
           <div className="formControl">
             <label htmlFor="paintingDescription">Popis maľby</label>
-            <input type="text" id="paintingDescription"></input>
+            <input
+              type="text"
+              id="paintingDescription"
+              ref={paintingDescription}
+            ></input>
           </div>
           <div className="formControl">
             <label htmlFor="paintingSerie">Séria maľby</label>
-            <input type="text" id="paintingSerie" list="series"></input>
+            <input
+              type="text"
+              id="paintingSerie"
+              ref={paintingSerie}
+              list="series"
+            ></input>
             <datalist id="series">
               {series.map((serie) => {
                 return (
-                  <option onClick={setSelectedSerie} key={serie.id}>
+                  <option onClick={setSerie} key={serie.id}>
                     {serie.name}
                   </option>
                 );

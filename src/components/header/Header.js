@@ -1,7 +1,7 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-function Header() {
+export default function Header() {
   function openSidebar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
     primaryNavigation.classList.toggle("nav-active");
@@ -54,5 +54,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;
