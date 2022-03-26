@@ -18,7 +18,6 @@ export default function AdminPage() {
 
   const paintingDescription = useRef();
   const [paintingFile, setPaintingFile] = useState();
-  const [selectedSerie, setSelectedSerie] = useState();
   const paintingSerie = useRef();
 
   const [exhibitionFile, setExhibitionFile] = useState();
@@ -54,23 +53,16 @@ export default function AdminPage() {
 
   function setSelectedPaintingImage(e) {
     e.preventDefault();
-    let selected = e.target.files[0];
-    selected && allowedTypes.includes(selected.type)
+    e.target.files[0] && allowedTypes.includes(selected.type)
       ? setPaintingFile(selected)
       : setPaintingFile(null);
   }
 
   function setSelectedExhibitionImage(e) {
     e.preventDefault();
-    let selected = e.target.files[0];
-    selected && allowedTypes.includes(selected.type)
+    e.target.files[0] && allowedTypes.includes(selected.type)
       ? setExhibitionFile(selected)
       : setExhibitionFile(null);
-  }
-
-  function setSerie(e) {
-    e.preventDefault();
-    console.log(e);
   }
 
   async function submitForm() {
@@ -84,6 +76,9 @@ export default function AdminPage() {
       const storageRef = storage.ref(paintingFile.name);
       await storageRef.put(paintingFile);
       const url = await storageRef.getDownloadURL();
+      const selectedSerie = series.find(
+        (serie) => serie.name === paintingSerie.current.value
+      );
       if (!selectedSerie && paintingSerie.current.value) {
         const q = query(
           seriesCollectionRef,
@@ -155,11 +150,7 @@ export default function AdminPage() {
             ></input>
             <datalist id="series">
               {series.map((serie) => {
-                return (
-                  <option onClick={setSerie} key={serie.id}>
-                    {serie.name}
-                  </option>
-                );
+                return <option key={serie.id}>{serie.name}</option>;
               })}
             </datalist>
           </div>

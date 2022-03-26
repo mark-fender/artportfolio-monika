@@ -47,12 +47,22 @@ h1 {
   width: 0;
   left: 50%;
   bottom: -3.5px;
-  transition: 0.5s ease-out;
+  transition: 0.4s ease-out;
 }
 
 .primary-navigation a:hover::after {
   left: 0;
   width: 100%;
+}
+
+a.active::after {
+  content: "";
+  position: absolute;
+  background-color: #5e6166;
+  height: 0.5px;
+  width: 100%;
+  left: 0;
+  bottom: -3.5px;
 }
 
 .burger-menu {

@@ -8,6 +8,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   border: 1px solid silver;
+  padding: 1rem;
 }
 
 h3 {
@@ -34,7 +35,7 @@ textarea {
 
 textarea {
   resize: none;
-  height: 2.5rem;
+  height: 5rem;
   width: 40rem;
 }
 

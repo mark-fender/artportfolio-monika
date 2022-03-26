@@ -17,6 +17,12 @@ export default function Header() {
     burgerMenu.classList.toggle("toggle");
   }
 
+  function onNavLinkClick(e) {
+    document.querySelector(".active")?.classList?.remove("active");
+    e.target.classList.add("active");
+    e.target.focus();
+  }
+
   return (
     <div className="Header">
       <nav>
@@ -25,22 +31,38 @@ export default function Header() {
         </div>
         <ul className="primary-navigation">
           <li>
-            <Link to="/bio" className="navigation-link">
+            <Link
+              to="/bio"
+              onClick={onNavLinkClick}
+              className="navigation-link active"
+            >
               Bio
             </Link>
           </li>
           <li>
-            <Link to="/gallery" className="navigation-link">
+            <Link
+              to="/gallery"
+              className="navigation-link"
+              onClick={onNavLinkClick}
+            >
               Galéria
             </Link>
           </li>
           <li>
-            <Link to="/exhibitions" className="navigation-link">
+            <Link
+              to="/exhibitions"
+              className="navigation-link"
+              onClick={onNavLinkClick}
+            >
               Výstavy
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="navigation-link">
+            <Link
+              to="/contact"
+              className="navigation-link"
+              onClick={onNavLinkClick}
+            >
               Kontakt
             </Link>
           </li>
