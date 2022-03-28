@@ -27,18 +27,19 @@ export default function AdminPage() {
   const allowedTypes = ["image/png", "image/jpeg", "image/jpeg"];
   const componentMounted = useRef(true);
 
+  const getSeries = async () => {
+    const series = await getDocs(seriesCollectionRef);
+    setSeries(
+      series.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+    );
+  };
+
   useEffect(() => {
     setLoading(true);
     if (componentMounted.current) {
-      const getSeries = async () => {
-        const series = await getDocs(seriesCollectionRef);
-        setSeries(
-          series.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id,
-          }))
-        );
-      };
       getSeries();
     }
     setLoading(false);
@@ -53,15 +54,15 @@ export default function AdminPage() {
 
   function setSelectedPaintingImage(e) {
     e.preventDefault();
-    e.target.files[0] && allowedTypes.includes(selected.type)
-      ? setPaintingFile(selected)
+    e.target.files[0] && allowedTypes.includes(e.target.files[0].type)
+      ? setPaintingFile(e.target.files[0])
       : setPaintingFile(null);
   }
 
   function setSelectedExhibitionImage(e) {
     e.preventDefault();
-    e.target.files[0] && allowedTypes.includes(selected.type)
-      ? setExhibitionFile(selected)
+    e.target.files[0] && allowedTypes.includes(e.target.files[0].type)
+      ? setExhibitionFile(e.target.files[0])
       : setExhibitionFile(null);
   }
 
@@ -79,6 +80,7 @@ export default function AdminPage() {
       const selectedSerie = series.find(
         (serie) => serie.name === paintingSerie.current.value
       );
+      const createdAt = new Date().getTime();
       if (!selectedSerie && paintingSerie.current.value) {
         const q = query(
           seriesCollectionRef,
@@ -93,12 +95,14 @@ export default function AdminPage() {
         });
         await setDoc(doc(seriesCollectionRef), {
           name: paintingSerie.current.value,
+          createdAt,
         });
         try {
           await setDoc(doc(paintingsCollectionRef), {
             description: paintingDescription.current.value,
             serie: newSerie.id,
             image: url,
+            createdAt,
           });
           window.alert("Úspešne nahrané. To je krása! 😍");
         } catch (error) {
@@ -119,6 +123,8 @@ export default function AdminPage() {
         }
       }
     }
+    document.querySelectorAll("input").forEach((input) => (input.value = null));
+    getSeries();
   }
 
   return (

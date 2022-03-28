@@ -2,7 +2,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  function openSidebar() {
+  function toggleSidebar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
     primaryNavigation.classList.toggle("nav-active");
     const navLinks = document.querySelectorAll(".primary-navigation li");
@@ -10,7 +10,7 @@ export default function Header() {
       link.style.animation
         ? (link.style.animation = ``)
         : (link.style.animation = `navigationFade 0.5s ease forwards ${
-            index / 5 + 0.5
+            index / 5 + 0.35
           }s`);
     });
     const burgerMenu = document.querySelector(".burger-menu");
@@ -20,7 +20,13 @@ export default function Header() {
   function onNavLinkClick(e) {
     document.querySelector(".active")?.classList?.remove("active");
     e.target.classList.add("active");
-    e.target.focus();
+    const observer = new IntersectionObserver(
+      function (entries) {
+        if (entries[0].isIntersecting) toggleSidebar();
+      },
+      { threshold: [0] }
+    );
+    observer.observe(document.querySelector(".burger-menu"));
   }
 
   return (
@@ -34,7 +40,11 @@ export default function Header() {
             <Link
               to="/bio"
               onClick={onNavLinkClick}
-              className="navigation-link active"
+              className={
+                window.location.pathname === "/bio"
+                  ? "navigation-link active"
+                  : "navigation-link"
+              }
             >
               Bio
             </Link>
@@ -42,7 +52,11 @@ export default function Header() {
           <li>
             <Link
               to="/gallery"
-              className="navigation-link"
+              className={
+                window.location.pathname === "/gallery"
+                  ? "navigation-link active"
+                  : "navigation-link"
+              }
               onClick={onNavLinkClick}
             >
               Galéria
@@ -51,7 +65,11 @@ export default function Header() {
           <li>
             <Link
               to="/exhibitions"
-              className="navigation-link"
+              className={
+                window.location.pathname === "/exhibitions"
+                  ? "navigation-link active"
+                  : "navigation-link"
+              }
               onClick={onNavLinkClick}
             >
               Výstavy
@@ -60,14 +78,18 @@ export default function Header() {
           <li>
             <Link
               to="/contact"
-              className="navigation-link"
+              className={
+                window.location.pathname === "/contact"
+                  ? "navigation-link active"
+                  : "navigation-link"
+              }
               onClick={onNavLinkClick}
             >
               Kontakt
             </Link>
           </li>
         </ul>
-        <div className="burger-menu" onClick={openSidebar}>
+        <div className="burger-menu" onClick={toggleSidebar}>
           <div className="line1"></div>
           <div className="line2"></div>
           <div className="line3"></div>
