@@ -38,11 +38,11 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    setLoading(true);
     if (componentMounted.current) {
+      setLoading(true);
       getSeries();
+      setLoading(false);
     }
-    setLoading(false);
     return () => {
       componentMounted.current = false;
     };
@@ -115,6 +115,7 @@ export default function AdminPage() {
             description: paintingDescription.current.value,
             serie: selectedSerie.id,
             image: url,
+            createdAt,
           });
           window.alert("Úspešne nahrané. To je krása! 😍");
         } catch (error) {

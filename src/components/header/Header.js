@@ -41,7 +41,8 @@ export default function Header() {
               to="/bio"
               onClick={onNavLinkClick}
               className={
-                window.location.pathname === "/bio"
+                window.location.pathname === "/bio" ||
+                window.location.pathname === "/"
                   ? "navigation-link active"
                   : "navigation-link"
               }

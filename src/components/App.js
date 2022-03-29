@@ -4,6 +4,7 @@ import {
   Outlet,
   Route,
   Routes,
+  Navigate
 } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
@@ -43,12 +44,11 @@ export default function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path="/admin" element={<AdminPage />}></Route>
           </Route>
-          <Route path="/" element={<Bio />} />
+          <Route exact path="/" element={<Navigate replace to="/bio" />} />
           <Route path="/bio" element={<Bio />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/exhibitions" element={<Exhibitions />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Bio />} />
         </Routes>
       </div>
     </Router>
