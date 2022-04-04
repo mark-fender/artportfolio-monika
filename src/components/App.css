@@ -1,7 +1,5 @@
 .App {
   font-family: "Montserrat", sans-serif;
-  width: 100vw;
-  height: 100vh;
   display: grid;
 }
 
@@ -9,4 +7,12 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1000;
+}
+
+.Gallery {
+  position: relative;
+  top: 15vh;
+  justify-self: center;
+  width: 75%;
 }

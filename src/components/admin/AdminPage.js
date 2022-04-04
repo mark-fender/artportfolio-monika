@@ -27,16 +27,6 @@ export default function AdminPage() {
   const allowedTypes = ["image/png", "image/jpeg", "image/jpeg"];
   const componentMounted = useRef(true);
 
-  const getSeries = async () => {
-    const series = await getDocs(seriesCollectionRef);
-    setSeries(
-      series.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }))
-    );
-  };
-
   useEffect(() => {
     if (componentMounted.current) {
       setLoading(true);
@@ -47,6 +37,16 @@ export default function AdminPage() {
       componentMounted.current = false;
     };
   }, []);
+
+  async function getSeries() {
+    const series = await getDocs(seriesCollectionRef);
+    setSeries(
+      series.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+    );
+  }
 
   async function logout() {
     await auth.signOut();

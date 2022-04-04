@@ -4,7 +4,7 @@ import {
   Outlet,
   Route,
   Routes,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import "./App.css";
 import Header from "./header/Header";
@@ -26,13 +26,13 @@ export default function App() {
     });
   }
 
-  const ProtectedRoutes = () => {
-    return user ? <Outlet /> : <Login />;
-  };
-
   useEffect(() => {
     authListener();
   }, []);
+
+  const ProtectedRoutes = () => {
+    return user ? <Outlet /> : <Login />;
+  };
 
   return user === "" ? (
     <div></div>
