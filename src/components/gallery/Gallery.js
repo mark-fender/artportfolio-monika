@@ -17,18 +17,16 @@ export default function Gallery() {
   }, []);
 
   async function getSeries() {
-    const seriesDocs = await getDocs(
-      seriesCollectionRef,
-      orderBy("createdAt", "desc")
-    );
-    const paintingsDocs = await getDocs(
-      paintingsCollectionRef,
-      orderBy("createdAt", "desc")
-    );
-    let seriesMapped = seriesDocs.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
+    const seriesDocs = await getDocs(seriesCollectionRef);
+    const paintingsDocs = await getDocs(paintingsCollectionRef);
+    let seriesMapped = seriesDocs.docs
+      .map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }))
+      .sort(function (x, y) {
+        return y.createdAt - x.createdAt;
+      });
     let paintingsMapped = paintingsDocs.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
@@ -40,9 +38,11 @@ export default function Gallery() {
 
   function mapPaintingsToSeries(series, paintings) {
     series.forEach((serie) => {
-      serie.paintings = paintings.filter(
-        (painting) => painting.serie === serie.id
-      );
+      serie.paintings = paintings
+        .filter((painting) => painting.serie === serie.id)
+        .sort(function (x, y) {
+          return y.createdAt - x.createdAt;
+        });
     });
   }
 
@@ -55,7 +55,7 @@ export default function Gallery() {
   return (
     <>
       <div className={model ? "model open" : "model"}>
-        <img className="zoom-image" src={tempImgSrc}></img>
+        {model ? <img className="zoom-image" src={tempImgSrc}></img> : <></>}
         <div className="model-description">
           <span>{zoomImgDescription}</span>
           <img
@@ -70,7 +70,10 @@ export default function Gallery() {
           series.map((serie) => {
             return (
               <div className="serie-content" key={serie.id}>
-                <h2 className="serie-header">{serie.name}</h2>
+                <div className="serie-header">
+                  <h2>{serie.name}</h2>
+                  <hr />
+                </div>
                 <div className="paintings-img-grid">
                   {serie.paintings &&
                     serie.paintings.map((painting) => {

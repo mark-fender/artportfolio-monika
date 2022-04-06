@@ -1,6 +1,24 @@
 .serie-header {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  letter-spacing: 3.5px;
+  margin-bottom: 2.75rem;
+}
+
+h2 {
+  margin-bottom: 0.1rem;
+  text-align: center;
+}
+
+hr {
+  width: 75%;
+  opacity: 0.75;
+  display: block;
+  border: 1px inset;
+  overflow: hidden;
+  background-color: #1b1b1b;
 }
 
 .serie-content {
@@ -11,23 +29,22 @@
 }
 
 .paintings-img-grid {
-  column-count: 3;
-  -webkit-column-count: 3;
-  -moz-column-count: 3;
-  column-width: 33%;
-  -webkit-column-width: 33%;
-  -moz-column-width: 33%;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
   padding: 0 12px;
+  margin-bottom: 2rem;
 }
 
 .paintings-img-grid .painting-wrapper {
   cursor: pointer;
-  margin-bottom: 12px;
   position: relative;
-  margin: 1rem;
   height: 250px;
   width: 250px;
   overflow: hidden;
+  background-color: #1b1b1b;
 }
 
 .painting-image {
@@ -76,22 +93,29 @@
   opacity: 0.75;
 }
 
-@media screen and (max-width: 990px) {
-  .paintings-img-grid {
-    column-count: 2;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
+@media screen and (min-width: 1024px) {
+  .paintings-img-grid .painting-wrapper {
+    height: 275px;
+    width: 275px;
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 1023px) {
+  .paintings-img-grid .painting-wrapper {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   .paintings-img-grid {
-    column-count: 1;
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-width: 100%;
-    -webkit-column-width: 100%;
-    -moz-column-width: 100%;
+    grid-template-columns: max-content;
+    grid-column-gap: 2rem;
+  }
+
+  hr {
+    width: 100%;
+    max-width: 20rem;
   }
 }
 

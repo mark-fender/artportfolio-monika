@@ -50,6 +50,14 @@ export default function App() {
           <Route path="/exhibitions" element={<Exhibitions />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <div className="signature-area">
+          <span>
+            Created by{" "}
+            <a href="https://www.linkedin.com/in/marek-lip%C4%8D%C3%A1k-900773228/">
+              Marek Lipčák
+            </a>
+          </span>
+        </div>
       </div>
     </Router>
   );
