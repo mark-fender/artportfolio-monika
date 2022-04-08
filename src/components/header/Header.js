@@ -1,7 +1,9 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
+  let location = useLocation();
+
   function toggleSidebar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
     primaryNavigation.classList.toggle("nav-active");
@@ -41,8 +43,7 @@ export default function Header() {
               to="/bio"
               onClick={onNavLinkClick}
               className={
-                window.location.pathname === "/bio" ||
-                window.location.pathname === "/"
+                location.pathname === "/bio" || location.pathname === "/"
                   ? "navigation-link active"
                   : "navigation-link"
               }
@@ -54,7 +55,7 @@ export default function Header() {
             <Link
               to="/gallery"
               className={
-                window.location.pathname === "/gallery"
+                location.pathname === "/gallery"
                   ? "navigation-link active"
                   : "navigation-link"
               }
@@ -67,7 +68,7 @@ export default function Header() {
             <Link
               to="/exhibitions"
               className={
-                window.location.pathname === "/exhibitions"
+                location.pathname === "/exhibitions"
                   ? "navigation-link active"
                   : "navigation-link"
               }
@@ -80,7 +81,7 @@ export default function Header() {
             <Link
               to="/contact"
               className={
-                window.location.pathname === "/contact"
+                location.pathname === "/contact"
                   ? "navigation-link active"
                   : "navigation-link"
               }

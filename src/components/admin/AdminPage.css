@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   border-radius: 10px;
   border: 1px solid silver;
   padding: 1rem;
@@ -20,6 +20,7 @@ form {
   margin: 2rem auto;
   width: 100%;
   height: 65%;
+  font-weight: 600;
 }
 
 .formControl {
@@ -42,6 +43,7 @@ textarea {
 
 .section {
   display: inline-flex;
+  margin: 1rem;
 }
 
 .buttonArea {

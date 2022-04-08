@@ -19,20 +19,22 @@ export default function Gallery() {
   async function getSeries() {
     const seriesDocs = await getDocs(seriesCollectionRef);
     const paintingsDocs = await getDocs(paintingsCollectionRef);
-    let seriesMapped = seriesDocs.docs
-      .map((doc) => ({
+    if (seriesDocs && paintingsDocs) {
+      let seriesMapped = seriesDocs.docs
+        .map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+        .sort(function (x, y) {
+          return y.createdAt - x.createdAt;
+        });
+      let paintingsMapped = paintingsDocs.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
-      }))
-      .sort(function (x, y) {
-        return y.createdAt - x.createdAt;
-      });
-    let paintingsMapped = paintingsDocs.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    mapPaintingsToSeries(seriesMapped, paintingsMapped);
-    setSeries(seriesMapped);
+      }));
+      mapPaintingsToSeries(seriesMapped, paintingsMapped);
+      setSeries(seriesMapped);
+    }
     setLoading(false);
   }
 

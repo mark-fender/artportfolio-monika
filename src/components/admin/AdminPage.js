@@ -16,6 +16,9 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [series, setSeries] = useState([]);
 
+  const bio = useRef();
+  const bioCollectionRef = db.collection("bio");
+
   const paintingDescription = useRef();
   const [paintingFile, setPaintingFile] = useState();
   const paintingSerie = useRef();
@@ -68,8 +71,20 @@ export default function AdminPage() {
 
   async function submitForm() {
     setLoading(true);
+    uploadBio();
     uploadNewPainting();
     setLoading(false);
+  }
+
+  function uploadBio() {
+    if (bio.current.value) {
+      try {
+        bioCollectionRef.doc("0").update({ bioText: bio.current.value });
+      } catch (error) {
+        console.error(error);
+        window.alert("Nahrávanie bia zlyhalo 😔");
+      }
+    }
   }
 
   async function uploadNewPainting() {
@@ -107,7 +122,7 @@ export default function AdminPage() {
           window.alert("Úspešne nahrané. To je krása! 😍");
         } catch (error) {
           console.error(error);
-          window.alert("Nahrávanie zlyhalo 😔");
+          window.alert("Nahrávanie maľby zlyhalo 😔");
         }
       } else {
         try {
@@ -120,7 +135,7 @@ export default function AdminPage() {
           window.alert("Úspešne nahrané. To je krása! 😍");
         } catch (error) {
           console.error(error);
-          window.alert("Nahrávanie zlyhalo 😔");
+          window.alert("Nahrávanie maľby zlyhalo 😔");
         }
       }
     }
@@ -134,7 +149,7 @@ export default function AdminPage() {
         <div className="section">
           <h3>Bio</h3>
           <div className="formControl">
-            <textarea type="text" id="bio"></textarea>
+            <textarea type="text" id="bio" ref={bio}></textarea>
           </div>
         </div>
         <div className="section">

@@ -1,7 +1,6 @@
 .App {
   font-family: "Montserrat", sans-serif;
   display: grid;
-  position: relative;
 }
 
 .Header {
@@ -11,7 +10,10 @@
   z-index: 1000;
 }
 
-.Gallery {
+.Gallery,
+.Bio,
+.Exhibitions,
+.Contact {
   position: relative;
   top: 15vh;
   justify-self: center;

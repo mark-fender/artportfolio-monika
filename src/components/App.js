@@ -53,7 +53,7 @@ export default function App() {
         <div className="signature-area">
           <span>
             Created by{" "}
-            <a href="https://www.linkedin.com/in/marek-lip%C4%8D%C3%A1k-900773228/">
+            <a href="https://www.linkedin.com/in/marek-lip%C4%8D%C3%A1k/">
               Marek Lipčák
             </a>
           </span>
