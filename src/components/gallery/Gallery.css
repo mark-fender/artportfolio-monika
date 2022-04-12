@@ -25,7 +25,7 @@ hr {
   width: 100%;
   display: grid;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 }
 
 .paintings-img-grid {
@@ -35,7 +35,6 @@ hr {
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   padding: 0 12px;
-  margin-bottom: 5rem;
 }
 
 .paintings-img-grid .painting-wrapper {

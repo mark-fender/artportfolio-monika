@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
-import { collection, getDocs, orderBy } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import "./Gallery.css";
 
 export default function Gallery() {

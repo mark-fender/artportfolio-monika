@@ -17,16 +17,18 @@ export default function AdminPage() {
   const [series, setSeries] = useState([]);
 
   const bio = useRef();
-  const bioCollectionRef = db.collection("bio");
 
   const paintingDescription = useRef();
   const [paintingFile, setPaintingFile] = useState();
   const paintingSerie = useRef();
 
+  const exhibitionName = useRef();
   const [exhibitionFile, setExhibitionFile] = useState();
 
   const seriesCollectionRef = collection(db, "series");
   const paintingsCollectionRef = collection(db, "paintings");
+  const bioCollectionRef = db.collection("bio");
+  const exhibitionsCollectionRef = db.collection("exhibitions");
   const allowedTypes = ["image/png", "image/jpeg", "image/jpeg"];
   const componentMounted = useRef(true);
 
@@ -71,9 +73,14 @@ export default function AdminPage() {
 
   async function submitForm() {
     setLoading(true);
-    uploadBio();
-    uploadNewPainting();
-    setLoading(false);
+    Promise.all([uploadBio(), uploadNewPainting(), uploadNewExhibition()]).then(
+      () => {
+        document
+          .querySelectorAll("input")
+          .forEach((input) => (input.value = null));
+        setLoading(false);
+      }
+    );
   }
 
   function uploadBio() {
@@ -139,8 +146,26 @@ export default function AdminPage() {
         }
       }
     }
-    document.querySelectorAll("input").forEach((input) => (input.value = null));
     getSeries();
+  }
+
+  async function uploadNewExhibition() {
+    if (exhibitionName.current.value && exhibitionFile) {
+      const storageRef = storage.ref(exhibitionFile.name);
+      await storageRef.put(exhibitionFile);
+      const url = await storageRef.getDownloadURL();
+      try {
+        await setDoc(doc(exhibitionsCollectionRef), {
+          name: exhibitionName.current.value,
+          image: url,
+          createdAt: new Date().getTime(),
+        });
+        window.alert("Úspešne nahrané. Si šikovná! 😘");
+      } catch (error) {
+        console.error(error);
+        window.alert("Nahrávanie výstavy zlyhalo 😔");
+      }
+    }
   }
 
   return (
@@ -189,7 +214,7 @@ export default function AdminPage() {
           <h3>Výstava</h3>
           <div className="formControl">
             <label htmlFor="exhibitionName">Názov výstavy</label>
-            <input type="text" id="exhibitionName"></input>
+            <input type="text" id="exhibitionName" ref={exhibitionName}></input>
           </div>
           <div className="formControl">
             <label htmlFor="exhibitionFile">Plagát</label>

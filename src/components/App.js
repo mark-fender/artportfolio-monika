@@ -52,9 +52,13 @@ export default function App() {
         </Routes>
         <div className="signature-area">
           <span>
-            Created by{" "}
-            <a href="https://www.linkedin.com/in/marek-lip%C4%8D%C3%A1k/">
-              Marek Lipčák
+            Web by{" "}
+            <a
+              href="https://www.linkedin.com/in/marek-lip%C4%8D%C3%A1k/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Marek Lipčák - LinkedIn
             </a>
           </span>
         </div>

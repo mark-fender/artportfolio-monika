@@ -1,0 +1,73 @@
+.exhibitions-wrapper {
+  margin-bottom: 5rem;
+}
+
+.exhibition-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  letter-spacing: 3.5px;
+  margin-bottom: 2.75rem;
+}
+
+h2 {
+  margin-bottom: 0.1rem;
+  text-align: center;
+}
+
+hr {
+  width: 75%;
+  opacity: 0.75;
+  display: block;
+  border: 1px inset;
+  overflow: hidden;
+  background-color: #1b1b1b;
+}
+
+.exhibition-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.exhibition-poster img {
+  width: 750px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 1023px) {
+  .exhibition-poster {
+    height: fit-content;
+  }
+
+  .exhibition-poster img {
+    width: 525px;
+    height: 775px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .exhibition-content {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .exhibition-poster {
+    height: fit-content;
+  }
+
+  .exhibition-poster img {
+    width: 275px;
+    height: 500px;
+  }
+
+  hr {
+    width: 100%;
+    max-width: 20rem;
+  }
+}
