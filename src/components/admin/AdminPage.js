@@ -86,7 +86,7 @@ export default function AdminPage() {
   async function uploadBio() {
     if (bio.current.value) {
       try {
-        await bioCollectionRef.doc("0").update({bioText: bio.current.value});
+        await bioCollectionRef.doc("0").update({ bioText: bio.current.value });
       } catch (error) {
         console.error(error);
         window.alert("Nahrávanie bia zlyhalo 😔");
@@ -172,60 +172,64 @@ export default function AdminPage() {
     <div className="formArea">
       <form>
         <fieldset disabled={loading}>
-        <div className="section">
-          <h3>Bio</h3>
-          <div className="formControl">
-            <textarea id="bio" ref={bio}></textarea>
+          <div className="section">
+            <h3>Bio</h3>
+            <div className="formControl">
+              <textarea id="bio" ref={bio}></textarea>
+            </div>
           </div>
-        </div>
-        <div className="section">
-          <h3>Maľba</h3>
-          <div className="formControl">
-            <label htmlFor="paintingDescription">Popis maľby</label>
-            <input
-              type="text"
-              id="paintingDescription"
-              ref={paintingDescription}
-            ></input>
+          <div className="section">
+            <h3>Maľba</h3>
+            <div className="formControl">
+              <label htmlFor="paintingDescription">Popis maľby</label>
+              <input
+                type="text"
+                id="paintingDescription"
+                ref={paintingDescription}
+              ></input>
+            </div>
+            <div className="formControl">
+              <label htmlFor="paintingSerie">Séria maľby</label>
+              <input
+                type="text"
+                id="paintingSerie"
+                ref={paintingSerie}
+                list="series"
+              ></input>
+              <datalist id="series">
+                {series.map((serie) => {
+                  return <option key={serie.id}>{serie.name}</option>;
+                })}
+              </datalist>
+            </div>
+            <div className="formControl">
+              <label htmlFor="paintingFile">Fotka maľby</label>
+              <input
+                type="file"
+                id="paintingFile"
+                onChange={setSelectedPaintingImage}
+              ></input>
+            </div>
           </div>
-          <div className="formControl">
-            <label htmlFor="paintingSerie">Séria maľby</label>
-            <input
-              type="text"
-              id="paintingSerie"
-              ref={paintingSerie}
-              list="series"
-            ></input>
-            <datalist id="series">
-              {series.map((serie) => {
-                return <option key={serie.id}>{serie.name}</option>;
-              })}
-            </datalist>
+          <div className="section">
+            <h3>Výstava</h3>
+            <div className="formControl">
+              <label htmlFor="exhibitionName">Názov výstavy</label>
+              <input
+                type="text"
+                id="exhibitionName"
+                ref={exhibitionName}
+              ></input>
+            </div>
+            <div className="formControl">
+              <label htmlFor="exhibitionFile">Plagát</label>
+              <input
+                type="file"
+                id="exhibitionFile"
+                onChange={setSelectedExhibitionImage}
+              ></input>
+            </div>
           </div>
-          <div className="formControl">
-            <label htmlFor="paintingFile">Fotka maľby</label>
-            <input
-              type="file"
-              id="paintingFile"
-              onChange={setSelectedPaintingImage}
-            ></input>
-          </div>
-        </div>
-        <div className="section">
-          <h3>Výstava</h3>
-          <div className="formControl">
-            <label htmlFor="exhibitionName">Názov výstavy</label>
-            <input type="text" id="exhibitionName" ref={exhibitionName}></input>
-          </div>
-          <div className="formControl">
-            <label htmlFor="exhibitionFile">Plagát</label>
-            <input
-              type="file"
-              id="exhibitionFile"
-              onChange={setSelectedExhibitionImage}
-            ></input>
-          </div>
-        </div>
         </fieldset>
       </form>
       <div className="buttonArea">
