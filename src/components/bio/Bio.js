@@ -20,6 +20,9 @@ export default function Bio() {
   return (
     <div className="Bio">
       <div className="bio-text">{bioText}</div>
+      <div className="signature">
+        <img src="assets/logo.webp" alt="signature"/>
+      </div>
     </div>
   );
 }

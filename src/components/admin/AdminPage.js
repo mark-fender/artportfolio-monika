@@ -29,7 +29,7 @@ export default function AdminPage() {
   const paintingsCollectionRef = collection(db, "paintings");
   const bioCollectionRef = db.collection("bio");
   const exhibitionsCollectionRef = db.collection("exhibitions");
-  const allowedTypes = ["image/png", "image/jpeg", "image/jpeg"];
+  const allowedTypes = ["image/png", "image/jpg", "image/jpeg"];
   const componentMounted = useRef(true);
 
   useEffect(() => {
@@ -83,10 +83,10 @@ export default function AdminPage() {
     );
   }
 
-  function uploadBio() {
+  async function uploadBio() {
     if (bio.current.value) {
       try {
-        bioCollectionRef.doc("0").update({ bioText: bio.current.value });
+        await bioCollectionRef.doc("0").update({bioText: bio.current.value});
       } catch (error) {
         console.error(error);
         window.alert("Nahrávanie bia zlyhalo 😔");
@@ -170,11 +170,12 @@ export default function AdminPage() {
 
   return (
     <div className="formArea">
-      <form disabled={loading}>
+      <form>
+        <fieldset disabled={loading}>
         <div className="section">
           <h3>Bio</h3>
           <div className="formControl">
-            <textarea type="text" id="bio" ref={bio}></textarea>
+            <textarea id="bio" ref={bio}></textarea>
           </div>
         </div>
         <div className="section">
@@ -225,6 +226,7 @@ export default function AdminPage() {
             ></input>
           </div>
         </div>
+        </fieldset>
       </form>
       <div className="buttonArea">
         <button className="logoutButton" onClick={logout} disabled={loading}>

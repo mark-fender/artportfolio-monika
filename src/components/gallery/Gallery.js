@@ -20,7 +20,7 @@ export default function Gallery() {
     const seriesDocs = await getDocs(seriesCollectionRef);
     const paintingsDocs = await getDocs(paintingsCollectionRef);
     if (seriesDocs && paintingsDocs) {
-      let seriesMapped = seriesDocs.docs
+      const seriesMapped = seriesDocs.docs
         .map((doc) => ({
           ...doc.data(),
           id: doc.id,
@@ -28,7 +28,7 @@ export default function Gallery() {
         .sort(function (x, y) {
           return y.createdAt - x.createdAt;
         });
-      let paintingsMapped = paintingsDocs.docs.map((doc) => ({
+      const paintingsMapped = paintingsDocs.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
@@ -57,14 +57,14 @@ export default function Gallery() {
   return (
     <>
       <div className={model ? "model open" : "model"}>
-        {model ? <img className="zoom-image" src={tempImgSrc}></img> : <></>}
+        {model ? <img className="zoom-image" src={tempImgSrc} alt={zoomImgDescription} /> : <></>}
         <div className="model-description">
           <span>{zoomImgDescription}</span>
           <img
             className="close-icon"
             src="assets/close.webp"
             onClick={() => setModel(false)}
-          ></img>
+           alt="close-icon" />
         </div>
       </div>
       <div className="Gallery">
@@ -91,7 +91,7 @@ export default function Gallery() {
                             src={painting.image}
                             alt={painting.description}
                             className="painting-image"
-                          ></img>
+                          />
                           <div className="description-wrapper">
                             <span className="description">
                               {painting.description}

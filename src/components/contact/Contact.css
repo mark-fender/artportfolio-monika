@@ -1,0 +1,43 @@
+.contact-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh;
+}
+
+.contact-type {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+}
+
+.contact-type img {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 2rem;
+}
+
+.contact-type .contact-type-title {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #575756;
+}
+
+@media screen and (max-width: 900px) {
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .contact-type {
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-type img {
+        margin-bottom: 1rem;
+    }
+}
+

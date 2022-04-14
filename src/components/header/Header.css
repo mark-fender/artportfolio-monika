@@ -15,11 +15,10 @@ nav {
 
 .logo {
   padding-right: 1rem;
+  padding-bottom: 0.35rem;
+  letter-spacing: 5px;
 }
 
-h1 {
-  padding-bottom: 0.35rem;
-}
 
 .primary-navigation {
   display: flex;
@@ -114,9 +113,6 @@ a.active::after {
   .burger-menu {
     display: block;
     cursor: pointer;
-  }
-
-  .logo {
   }
 }
 

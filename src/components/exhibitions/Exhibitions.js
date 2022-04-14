@@ -39,7 +39,7 @@ export default function Exhibitions() {
                   <hr />
                 </div>
                 <div className="exhibition-poster">
-                  <img src={exhibition.image} alt="exhibition-poster"></img>
+                  <img src={exhibition.image} alt="exhibition-poster" />
                 </div>
               </div>
             );
