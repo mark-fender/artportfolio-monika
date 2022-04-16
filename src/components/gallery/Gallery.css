@@ -12,11 +12,12 @@ h2 {
   text-align: center;
 }
 
-hr {
+.serie-header .underline {
   width: 75%;
-  opacity: 0.75;
+  height: 0.5px;
+  opacity: 0.5;
   display: block;
-  border: 1px inset;
+  border: 0px inset;
   overflow: hidden;
   background-color: #1b1b1b;
 }
@@ -49,6 +50,7 @@ hr {
 .painting-image {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 

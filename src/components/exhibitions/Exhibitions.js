@@ -36,7 +36,7 @@ export default function Exhibitions() {
               <div className="exhibition-content" key={exhibition.id}>
                 <div className="exhibition-header">
                   <h2>{exhibition.name}</h2>
-                  <hr />
+                  <hr className="underline" />
                 </div>
                 <div className="exhibition-poster">
                   <img src={exhibition.image} alt="exhibition-poster" />

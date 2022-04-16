@@ -57,14 +57,23 @@ export default function Gallery() {
   return (
     <>
       <div className={model ? "model open" : "model"}>
-        {model ? <img className="zoom-image" src={tempImgSrc} alt={zoomImgDescription} /> : <></>}
+        {model ? (
+          <img
+            className="zoom-image"
+            src={tempImgSrc}
+            alt={zoomImgDescription}
+          />
+        ) : (
+          <></>
+        )}
         <div className="model-description">
           <span>{zoomImgDescription}</span>
           <img
             className="close-icon"
             src="assets/close.webp"
             onClick={() => setModel(false)}
-           alt="close-icon" />
+            alt="close-icon"
+          />
         </div>
       </div>
       <div className="Gallery">
@@ -74,7 +83,7 @@ export default function Gallery() {
               <div className="serie-content" key={serie.id}>
                 <div className="serie-header">
                   <h2>{serie.name}</h2>
-                  <hr />
+                  <hr className="underline" />
                 </div>
                 <div className="paintings-img-grid">
                   {serie.paintings &&
