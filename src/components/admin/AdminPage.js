@@ -29,7 +29,7 @@ export default function AdminPage() {
   const paintingsCollectionRef = collection(db, "paintings");
   const bioCollectionRef = db.collection("bio");
   const exhibitionsCollectionRef = db.collection("exhibitions");
-  const allowedTypes = ["image/png", "image/jpg", "image/jpeg"];
+  const allowedTypes = ["image/png", "image/jpg", "image/jpeg", "image/webp"];
   const componentMounted = useRef(true);
 
   useEffect(() => {
