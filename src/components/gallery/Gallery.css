@@ -94,7 +94,14 @@ h2 {
   opacity: 0.75;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 3000px) {
+  .paintings-img-grid .painting-wrapper {
+    height: 375px;
+    width: 375px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
   .paintings-img-grid .painting-wrapper {
     height: 275px;
     width: 275px;
@@ -102,6 +109,10 @@ h2 {
 }
 
 @media screen and (max-width: 1023px) {
+  .paintings-img-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .paintings-img-grid .painting-wrapper {
     height: 250px;
     width: 250px;
@@ -109,12 +120,16 @@ h2 {
 }
 
 @media screen and (max-width: 700px) {
+  .serie-header h2 {
+    max-width: 75%;
+  }
+
   .paintings-img-grid {
     grid-template-columns: max-content;
     grid-column-gap: 2rem;
   }
 
-  hr {
+  .underline {
     width: 100%;
     max-width: 20rem;
   }
