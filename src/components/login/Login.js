@@ -39,7 +39,7 @@ export default function Login() {
           type="submit"
           value="Prihlásiť sa"
           disabled={loading}
-          onClick={login}
+          onClick={() => login()}
         ></input>
       </form>
     </div>
