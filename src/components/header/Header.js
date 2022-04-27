@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <div className="Header">
       <nav className="navigation-bar">
-        <h3 className="logo">Monika Hurajová</h3>
+        <h3 className="heading">Monika Hurajová</h3>
         <ul className="primary-navigation">
           <li>
             <Link

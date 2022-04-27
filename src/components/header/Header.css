@@ -5,7 +5,6 @@
   min-height: 50px;
   height: 8vh;
   width: 100%;
-  font-size: 0.9rem;
   font-weight: 800;
   background-color: #dbdee3;
   opacity: 0.95;
@@ -13,7 +12,7 @@
   box-shadow: 0.5px 0.5px 5px #434444;
 }
 
-.logo {
+.heading {
   padding-right: 1rem;
   letter-spacing: 5px;
 }
@@ -75,17 +74,21 @@ a.active::after {
   transition: all 0.5s ease;
 }
 
-@media screen and (min-width: 1650px) {
+@media screen and (min-width: 1999px) {
   .primary-navigation {
     width: 45%;
   }
 
-  .navigation-bar {
-    max-height: 100px;
+  .primary-navigation a {
+    font-size: 1.5rem;
   }
 
-  .logo {
-    font-size: 25px;
+  .navigation-bar {
+    max-height: 125px;
+  }
+
+  .heading {
+    font-size: 1.75rem;
   }
 
   .primary-navigation {
@@ -102,6 +105,15 @@ a.active::after {
 @media screen and (max-width: 800px) {
   body {
     overflow-x: hidden;
+  }
+
+  .navigation-bar {
+    justify-content: space-around;
+  }
+
+  .heading {
+    letter-spacing: 2px;
+    margin-left: 0;
   }
 
   .primary-navigation {
@@ -171,5 +183,11 @@ a.active::after {
 
   .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+@media screen and (min-width: 1999px) {
+  .navigation-bar {
+    font-size: 1.25rem;
   }
 }

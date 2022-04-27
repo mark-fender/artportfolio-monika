@@ -100,6 +100,7 @@ export default function Gallery() {
                             src={painting.image}
                             alt={painting.description}
                             className="painting-image"
+                            loading="lazy"
                           />
                           <div className="description-wrapper">
                             <span className="description">

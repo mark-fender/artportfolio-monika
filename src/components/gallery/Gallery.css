@@ -94,28 +94,43 @@ h2 {
   opacity: 0.75;
 }
 
-@media screen and (max-width: 3000px) {
+@media screen and (min-width: 3000px) {
   .paintings-img-grid .painting-wrapper {
-    height: 375px;
-    width: 375px;
+    height: 750px;
+    width: 750px;
   }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (min-width: 2000px) {
   .paintings-img-grid .painting-wrapper {
-    height: 275px;
-    width: 275px;
+    height: 500px;
+    width: 500px;
+  }
+
+  .serie-header {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 2rem;
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1999px) {
+  .paintings-img-grid .painting-wrapper {
+    height: 325px;
+    width: 325px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
   .paintings-img-grid {
     grid-template-columns: 1fr 1fr;
   }
 
   .paintings-img-grid .painting-wrapper {
-    height: 250px;
-    width: 250px;
+    height: 275px;
+    width: 275px;
   }
 }
 

@@ -1,21 +1,90 @@
+.bio-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin: 2.5rem 0 5rem;
+  direction: rtl;
+}
+
+.logo {
+  height: 5rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.logo img {
+  width: 95px;
+  height: 85px;
+}
+
 .bio-text {
-  margin-bottom: 2rem;
   font-weight: 600;
-  font-size: 17.5px;
+  font-size: 15px;
   letter-spacing: 1px;
   text-align: justify;
+  text-align-last: left;
 }
 
-.signature {
-  width: 100%;
-  height: fit-content;
+.chicken-photo {
   display: flex;
   justify-content: center;
-  margin-bottom: 5rem;
+  padding-top: 5px;
 }
 
-@media screen and (max-width: 700px) {
+.chicken-photo img {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 2000px) {
+  .chicken-photo img {
+    max-height: 1650px;
+    height: 100%;
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 1921px) {
   .bio-text {
-    text-align: left;
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+
+  .logo img {
+    width: 110px;
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1300px) {
+  .chicken-photo img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 781px) and (max-width: 1200px) {
+  .bio-content {
+    grid-template-columns: auto;
+    gap: 2.5rem;
+    margin: 2.5rem 0 5rem;
+  }
+
+  .chicken-photo img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .bio-content {
+    grid-template-columns: auto;
+    gap: 2.5rem;
+    margin: 2.5rem 0 5rem;
+  }
+
+  .chicken-photo img {
+    height: auto;
+    width: 100%;
   }
 }
