@@ -39,7 +39,11 @@ export default function Exhibitions() {
                   <hr className="underline" />
                 </div>
                 <div className="exhibition-poster">
-                  <img src={exhibition.image} alt="exhibition-poster" />
+                  <img
+                    src={exhibition.image}
+                    alt="exhibition-poster"
+                    loading="lazy"
+                  />
                 </div>
               </div>
             );
