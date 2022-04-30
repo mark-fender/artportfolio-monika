@@ -119,34 +119,27 @@ export default function AdminPage() {
           name: paintingSerie.current.value,
           createdAt,
         });
-        try {
-          await setDoc(doc(paintingsCollectionRef), {
-            description: paintingDescription.current.value,
-            serie: newSerie.id,
-            image: url,
-            createdAt,
-          });
-          window.alert("Úspešne nahrané. To je krása! 😍");
-        } catch (error) {
-          console.error(error);
-          window.alert("Nahrávanie maľby zlyhalo 😔");
-        }
+        createPainting(newSerie, url, createdAt);
+        getSeries();
       } else {
-        try {
-          await setDoc(doc(paintingsCollectionRef), {
-            description: paintingDescription.current.value,
-            serie: selectedSerie.id,
-            image: url,
-            createdAt,
-          });
-          window.alert("Úspešne nahrané. To je krása! 😍");
-        } catch (error) {
-          console.error(error);
-          window.alert("Nahrávanie maľby zlyhalo 😔");
-        }
+        createPainting(selectedSerie, url, createdAt);
       }
     }
-    getSeries();
+  }
+
+  async function createPainting(serie, url, createdAt) {
+    try {
+      await setDoc(doc(paintingsCollectionRef), {
+        description: paintingDescription.current.value,
+        serie: serie.id,
+        image: url,
+        createdAt,
+      });
+      window.alert("Úspešne nahrané. To je krása! 😍");
+    } catch (error) {
+      console.error(error);
+      window.alert("Nahrávanie maľby zlyhalo 😔");
+    }
   }
 
   async function uploadNewExhibition() {
