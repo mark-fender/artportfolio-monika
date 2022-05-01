@@ -2,7 +2,14 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
-import * as functions from "firebase/functions";
+import { getFunctions } from "firebase/functions";
+
+// Initialize Firebase
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const functions = getFunctions(firebaseApp);
+export const db = firebaseApp.firestore();
+export const storage = firebaseApp.storage();
+export const auth = firebase.auth();
 
 const firebaseConfig = {
   apiKey: functions.artportfolio_monika.apiKey,
@@ -12,9 +19,3 @@ const firebaseConfig = {
   messagingSenderId: process.env.artportfolio_monika.messaging_sender_id,
   appId: process.env.artportfolio_monika.app_id,
 };
-
-// Initialize Firebase
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-export const db = firebaseApp.firestore();
-export const storage = firebaseApp.storage();
-export const auth = firebase.auth();
