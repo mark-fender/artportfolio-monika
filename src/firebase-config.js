@@ -2,7 +2,15 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
-import { getFunctions } from "firebase/functions";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCb9xQKKx-_dkRG70rVAXnzk0iCuNkWloU",
+  authDomain: "artportfolio-monika-prod.firebaseapp.com",
+  projectId: "artportfolio-monika-prod",
+  storageBucket: "artportfolio-monika-prod.appspot.com",
+  messagingSenderId: "475563240044",
+  appId: "1:475563240044:web:12cb7f29af21d15aa14649",
+};
 
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -10,12 +18,3 @@ const functions = getFunctions(firebaseApp);
 export const db = firebaseApp.firestore();
 export const storage = firebaseApp.storage();
 export const auth = firebase.auth();
-
-const firebaseConfig = {
-  apiKey: functions.artportfolio_monika.apiKey,
-  authDomain: process.env.artportfolio_monika.auth_domain,
-  projectId: process.env.artportfolio_monika.project_id,
-  storageBucket: process.env.artportfolio_monika.storage_bucket,
-  messagingSenderId: process.env.artportfolio_monika.messaging_sender_id,
-  appId: process.env.artportfolio_monika.app_id,
-};
