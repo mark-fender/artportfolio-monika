@@ -41,8 +41,8 @@ export default function App() {
       <div className="App">
         <Header className="Header" />
         <Routes>
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/admin" element={<AdminPage />}></Route>
+          <Route path="/admin" element={<ProtectedRoutes />}>
+            <AdminPage />
           </Route>
           <Route exact path="/" element={<Navigate replace to="/bio" />} />
           <Route path="/bio" element={<Bio />} />
