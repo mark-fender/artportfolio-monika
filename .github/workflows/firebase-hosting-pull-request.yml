@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: actions/checkout@v2
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_ARTPORTFOLIO_MONIKA_PROD }}"
