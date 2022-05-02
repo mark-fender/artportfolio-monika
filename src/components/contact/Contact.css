@@ -11,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 10rem;
+  width: max-content;
 }
 
 .contact-type img {
@@ -45,5 +45,9 @@
   .contact-type img {
     height: 64px;
     width: 64px;
+  }
+
+  .contact-content {
+    margin-bottom: 5rem;
   }
 }

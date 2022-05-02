@@ -52,6 +52,7 @@ h2 {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  -webkit-transition: transform 0.5s ease;
 }
 
 .description-wrapper {
@@ -62,6 +63,7 @@ h2 {
   height: 100%;
   width: 100%;
   transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
 }
 
 .description {
@@ -84,10 +86,13 @@ h2 {
   justify-content: center;
   align-items: center;
   transition: 0.5s ease-out;
+  -webkit-transition: 0.5s ease-out;
 }
 
 .painting-wrapper:hover .painting-image {
   transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -webkit-transform: scale(1.25);
 }
 
 .painting-wrapper:hover {
@@ -163,9 +168,13 @@ h2 {
   background-color: #818181;
   transition: opacity 0.5s ease, visibility 0.5s ease,
     transform 0.5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease, visibility 0.5s ease,
+    -webkit-transform 0.5s ease-in-out;
   visibility: hidden;
   opacity: 0;
   transform: scale(0);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
   overflow: hidden;
   z-index: 10000;
 }
@@ -174,6 +183,8 @@ h2 {
   visibility: visible;
   opacity: 0.99;
   transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
 }
 
 .model img {
