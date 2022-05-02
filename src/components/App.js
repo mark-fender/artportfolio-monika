@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   const ProtectedRoutes = () => {
-    return user ? <Outlet /> : <Login />;
+    return user ? <AdminPage /> : <Login />;
   };
 
   return user === "" ? (
@@ -41,9 +41,7 @@ export default function App() {
       <div className="App">
         <Header className="Header" />
         <Routes>
-          <Route path="/admin" element={<ProtectedRoutes />}>
-            <AdminPage />
-          </Route>
+          <Route path="/admin" element={<ProtectedRoutes />}></Route>
           <Route exact path="/" element={<Navigate replace to="/bio" />} />
           <Route path="/bio" element={<Bio />} />
           <Route path="/gallery" element={<Gallery />} />
