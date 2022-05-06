@@ -4,12 +4,12 @@ import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCb9xQKKx-_dkRG70rVAXnzk0iCuNkWloU",
-  authDomain: "artportfolio-monika-prod.firebaseapp.com",
-  projectId: "artportfolio-monika-prod",
-  storageBucket: "artportfolio-monika-prod.appspot.com",
-  messagingSenderId: "475563240044",
-  appId: "1:475563240044:web:12cb7f29af21d15aa14649",
+  apiKey: process.env.ARTPORTFOLIO_MONIKA_API_KEY,
+  authDomain: ARTPORTFOLIO_MONIKA_AUTH_DOMAIN,
+  projectId: ARTPORTFOLIO_MONIKA_PROJECT_ID,
+  storageBucket: ARTPORTFOLIO_MONIKA_STORAGE_BUCKET,
+  messagingSenderId: ARTPORTFOLIO_MONIKA_SENDER_ID,
+  appId: ARTPORTFOLIO_MONIKA_APP_ID,
 };
 
 // Initialize Firebase
