@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 import "./Bio.css";
 
 export default function Bio() {
@@ -27,7 +29,11 @@ export default function Bio() {
           </div>
         </div>
         <div className="chicken-photo">
-          <img src="assets/chicken.webp" alt="portrait"></img>
+          <LazyLoadImage
+            effect="opacity"
+            src="assets/chicken.webp"
+            alt="portrait"
+          ></LazyLoadImage>
         </div>
       </div>
     </div>

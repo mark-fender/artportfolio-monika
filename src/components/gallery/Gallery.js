@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 import "./Gallery.css";
 
 export default function Gallery() {
@@ -96,11 +98,11 @@ export default function Gallery() {
                             getZoomedImage(painting.image, painting.description)
                           }
                         >
-                          <img
+                          <LazyLoadImage
+                            effect="opacity"
                             src={painting.image}
                             alt={painting.description}
                             className="painting-image"
-                            loading="lazy"
                           />
                           <div className="description-wrapper">
                             <span className="description">
