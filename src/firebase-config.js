@@ -4,12 +4,12 @@ import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.ARTPORTFOLIO_MONIKA_API_KEY,
-  authDomain: process.env.ARTPORTFOLIO_MONIKA_AUTH_DOMAIN,
-  projectId: process.env.ARTPORTFOLIO_MONIKA_PROJECT_ID,
-  storageBucket: process.env.ARTPORTFOLIO_MONIKA_STORAGE_BUCKET,
-  messagingSenderId: process.env.ARTPORTFOLIO_MONIKA_MESSAGING_SENDER_ID,
-  appId: process.env.ARTPORTFOLIO_MONIKA_APP_ID,
+  apiKey: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_ARTPORTFOLIO_MONIKA_APP_ID}`,
 };
 
 // Initialize Firebase
