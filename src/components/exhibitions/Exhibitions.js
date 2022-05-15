@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
 import "./Exhibitions.css";
 
 export default function Exhibitions() {
@@ -41,11 +39,7 @@ export default function Exhibitions() {
                   <hr className="underline" />
                 </div>
                 <div className="exhibition-poster">
-                  <LazyLoadImage
-                    effect="opacity"
-                    src={exhibition.image}
-                    alt="exhibition-poster"
-                  />
+                  <img src={exhibition.image} alt="exhibition-poster" />
                 </div>
               </div>
             );
