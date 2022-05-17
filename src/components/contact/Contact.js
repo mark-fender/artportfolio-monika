@@ -14,6 +14,8 @@ export default function Contact() {
           <img src="assets/insta.webp" alt="contact-type-icon" />
           <a
             href="https://www.instagram.com/m.hurajova_art"
+            target="_blank"
+            rel="noopener noreferrer"
             className="contact-type-title"
           >
             m.hurajova_art

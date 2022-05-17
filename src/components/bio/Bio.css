@@ -10,6 +10,7 @@
   height: 5rem;
   margin-top: 1rem;
   display: flex;
+  direction: rtl;
 }
 
 .logo img {
@@ -23,6 +24,7 @@
   letter-spacing: 1px;
   text-align: justify;
   text-align-last: left;
+  direction: ltr;
 }
 
 .chicken-photo {
@@ -81,6 +83,10 @@
     grid-template-columns: auto;
     gap: 2.5rem;
     margin: 2.5rem 0 5rem;
+  }
+
+  .bio-text {
+    text-align: left;
   }
 
   .chicken-photo img {
