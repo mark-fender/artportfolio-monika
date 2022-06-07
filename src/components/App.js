@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
-  Outlet,
   Route,
   Routes,
   Navigate,
@@ -31,7 +30,7 @@ export default function App() {
   }, []);
 
   const ProtectedRoutes = () => {
-    return user ? <AdminPage /> : <Login />;
+    return user && !user.isAnonymous ? <AdminPage /> : <Login />;
   };
 
   return user === "" ? (
