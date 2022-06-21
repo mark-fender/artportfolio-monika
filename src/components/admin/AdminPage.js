@@ -55,7 +55,6 @@ export default function AdminPage() {
 
   async function logout() {
     await auth.signOut();
-    await auth.signInAnonymously();
   }
 
   function setSelectedPaintingImage(e) {
