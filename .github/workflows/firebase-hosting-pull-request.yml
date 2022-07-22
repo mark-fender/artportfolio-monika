@@ -30,7 +30,7 @@ jobs:
         run: yarn install --immutable --immutable-cache --check-cache
 
       - name: Build
-        run: yarn build:production
+        run: yarn build --production
 
       - name: GitHub Action for Firebase
         uses: w9jds/firebase-action@v2.1.2
