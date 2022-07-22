@@ -25,7 +25,7 @@ export default function Gallery() {
           ...doc.data(),
           id: doc.id,
         }))
-        .sort(function (x, y) {
+        .sort((x, y) => {
           return y.createdAt - x.createdAt;
         });
       const paintingsMapped = paintingsDocs.docs.map((doc) => ({

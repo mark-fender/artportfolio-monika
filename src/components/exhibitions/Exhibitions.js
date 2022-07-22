@@ -20,7 +20,7 @@ export default function Exhibitions() {
           ...doc.data(),
           id: doc.id,
         }))
-        .sort(function (x, y) {
+        .sort((x, y) => {
           return y.createdAt - x.createdAt;
         })
     );
@@ -28,7 +28,7 @@ export default function Exhibitions() {
   }
 
   return (
-    <div className="Exhibitions">
+    <main className="Exhibitions">
       <div className="exhibitions-wrapper">
         {!loading && exhibitions ? (
           exhibitions.map((exhibition) => {
@@ -48,6 +48,6 @@ export default function Exhibitions() {
           <div></div>
         )}
       </div>
-    </div>
+    </main>
   );
 }

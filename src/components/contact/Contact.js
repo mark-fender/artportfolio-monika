@@ -2,7 +2,7 @@ import "./Contact.css";
 
 export default function Contact() {
   return (
-    <div className="Contact">
+    <main className="Contact">
       <div className="contact-content">
         <div className="contact-type">
           <img src="assets/mail.webp" alt="contact-type-icon" />
@@ -26,6 +26,6 @@ export default function Contact() {
           <span className="contact-type-title">+421 919 406 655</span>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

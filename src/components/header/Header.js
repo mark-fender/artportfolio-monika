@@ -2,7 +2,7 @@ import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
-  let location = useLocation();
+  const location = useLocation();
 
   function toggleSidebar() {
     const primaryNavigation = document.querySelector(".primary-navigation");
@@ -23,7 +23,7 @@ export default function Header() {
     document.querySelector(".active")?.classList?.remove("active");
     e.target.classList.add("active");
     const observer = new IntersectionObserver(
-      function (entries) {
+      (entries) => {
         if (entries[0].isIntersecting) toggleSidebar();
       },
       { threshold: [0] }
@@ -32,7 +32,7 @@ export default function Header() {
   }
 
   return (
-    <div className="Header">
+    <header className="Header">
       <nav className="navigation-bar">
         <h3 className="heading">Monika Hurajová</h3>
         <ul className="primary-navigation">
@@ -95,6 +95,6 @@ export default function Header() {
           <div className="line3"></div>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

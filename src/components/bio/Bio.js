@@ -18,18 +18,18 @@ export default function Bio() {
   }
 
   return (
-    <div className="Bio">
+    <main className="Bio">
       <div className="bio-content">
-        <div className="bio-text">
+        <article className="bio-text">
           {bioText}
           <div className="logo">
             <img src="assets/logo.webp" alt="logo" />
           </div>
-        </div>
+        </article>
         <div className="chicken-photo">
           <img src="assets/chicken.webp" alt="portrait"></img>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

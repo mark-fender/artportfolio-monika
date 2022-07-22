@@ -47,7 +47,7 @@ export default function App() {
           <Route path="/exhibitions" element={<Exhibitions />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
-        <div className="signature-area">
+        <footer className="signature-area">
           <span>
             Web by{" "}
             <a
@@ -58,7 +58,7 @@ export default function App() {
               Marek Lipčák - LinkedIn
             </a>
           </span>
-        </div>
+        </footer>
       </div>
     </Router>
   );
