@@ -1,7 +1,7 @@
 function observeFadeInElements() {
   const fadeInElements = document.querySelectorAll(".fade-in");
   const fadeInOptions = {
-    threshold: 0,
+    threshold: 0.2,
   };
   const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
     entries.forEach((entry) => {
