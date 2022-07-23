@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import "./Gallery.css";
+import { observeFadeInElements } from "../../utils/observers";
 
 export default function Gallery() {
   const [series, setSeries] = useState([]);
@@ -48,6 +49,10 @@ export default function Gallery() {
     });
   }
 
+  useEffect(() => {
+    observeFadeInElements();
+  });
+
   function getZoomedImage(imageSrc, description) {
     setTempImgSrc(imageSrc);
     setZoomImgDescription(description);
@@ -80,7 +85,7 @@ export default function Gallery() {
         {!loading && series ? (
           series.map((serie) => {
             return (
-              <div className="serie-content" key={serie.id}>
+              <div className="serie-content fade-in" key={serie.id}>
                 <div className="serie-header">
                   <h2>{serie.name}</h2>
                   <hr className="underline" />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
+import { observeFadeInElements } from "../../utils/observers";
 import "./Bio.css";
 
 export default function Bio() {
@@ -17,19 +18,25 @@ export default function Bio() {
     }
   }
 
+  useEffect(() => {
+    observeFadeInElements();
+  });
+
   return (
     <main className="Bio">
-      <div className="bio-content">
-        <article className="bio-text">
-          {bioText}
-          <div className="logo">
-            <img src="assets/logo.webp" alt="logo" />
+      {bioText && (
+        <div className="bio-content fade-in">
+          <article className="bio-text">
+            {bioText}
+            <div className="logo">
+              <img src="assets/logo.webp" alt="logo" />
+            </div>
+          </article>
+          <div className="chicken-photo">
+            <img src="assets/chicken.webp" alt="portrait"></img>
           </div>
-        </article>
-        <div className="chicken-photo">
-          <img src="assets/chicken.webp" alt="portrait"></img>
         </div>
-      </div>
+      )}
     </main>
   );
 }

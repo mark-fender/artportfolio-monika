@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import { observeFadeInElements } from "../../utils/observers";
 import "./Exhibitions.css";
 
 export default function Exhibitions() {
@@ -27,13 +28,17 @@ export default function Exhibitions() {
     setLoading(false);
   }
 
+  useEffect(() => {
+    observeFadeInElements();
+  });
+
   return (
     <main className="Exhibitions">
       <div className="exhibitions-wrapper">
         {!loading && exhibitions ? (
           exhibitions.map((exhibition) => {
             return (
-              <div className="exhibition-content" key={exhibition.id}>
+              <div className="exhibition-content fade-in" key={exhibition.id}>
                 <div className="exhibition-header">
                   <h2>{exhibition.name}</h2>
                   <hr className="underline" />

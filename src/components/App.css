@@ -54,3 +54,13 @@ body {
     max-height: 30px;
   }
 }
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 750ms ease-in;
+  -webkit-transition: opacity 750ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}

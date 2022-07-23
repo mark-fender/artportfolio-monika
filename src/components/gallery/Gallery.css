@@ -80,23 +80,25 @@ h2 {
   word-break: normal;
 }
 
-.painting-wrapper:hover .description-wrapper {
-  background-color: #eaeaea;
-  opacity: 0.75;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s ease-out;
-  -webkit-transition: 0.5s ease-out;
-}
+@media (hover: hover) and (pointer: fine) {
+  .painting-wrapper:hover .description-wrapper {
+    background-color: #eaeaea;
+    opacity: 0.75;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    -webkit-transition: 0.5s ease-out;
+  }
 
-.painting-wrapper:hover .painting-image {
-  transform: scale(1.25);
-  -ms-transform: scale(1.25);
-  -webkit-transform: scale(1.25);
-}
+  .painting-wrapper:hover .painting-image {
+    transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+  }
 
-.painting-wrapper:hover {
-  opacity: 0.75;
+  .painting-wrapper:hover {
+    opacity: 0.75;
+  }
 }
 
 @media screen and (min-width: 3000px) {

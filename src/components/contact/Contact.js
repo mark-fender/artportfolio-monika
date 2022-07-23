@@ -1,9 +1,15 @@
 import "./Contact.css";
+import { observeFadeInElements } from "../../utils/observers";
+import { useEffect } from "react";
 
 export default function Contact() {
+  useEffect(() => {
+    observeFadeInElements(1);
+  });
+
   return (
     <main className="Contact">
-      <div className="contact-content">
+      <div className="contact-content fade-in">
         <div className="contact-type">
           <img src="assets/mail.webp" alt="contact-type-icon" />
           <a href="mailto:mh.hurajova@gmail.com" className="contact-type-title">
