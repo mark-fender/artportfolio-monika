@@ -178,6 +178,7 @@ export default function AdminPage() {
               <input
                 type="text"
                 id="paintingDescription"
+                autoComplete="off"
                 ref={paintingDescription}
               ></input>
             </div>
@@ -188,6 +189,7 @@ export default function AdminPage() {
                 id="paintingSerie"
                 ref={paintingSerie}
                 list="series"
+                autoComplete="off"
               ></input>
               <datalist id="series">
                 {series.map((serie) => {
@@ -211,6 +213,7 @@ export default function AdminPage() {
               <input
                 type="text"
                 id="exhibitionName"
+                autoComplete="off"
                 ref={exhibitionName}
               ></input>
             </div>

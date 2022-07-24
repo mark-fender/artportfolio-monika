@@ -25,15 +25,15 @@ export default function Bio() {
   return (
     <main className="Bio">
       {bioText && (
-        <div className="bio-content fade-in">
-          <article className="bio-text">
+        <div className="bio-content">
+          <article className="bio-text fade-in">
             {bioText}
             <div className="logo">
               <img src="assets/logo.webp" alt="logo" />
             </div>
           </article>
-          <div className="chicken-photo">
-            <img src="assets/chicken.webp" alt="portrait"></img>
+          <div className="chicken-photo fade-in">
+            {bioText && <img src="assets/chicken.webp" alt="portrait" />}
           </div>
         </div>
       )}
